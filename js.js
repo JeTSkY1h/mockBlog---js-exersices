@@ -20,9 +20,29 @@ async function fetchAsync (url) {
     return data;
   }
 
-async function getAllnames() {
-    console.log()
-}
+  const getAllNamesAndOrigin = () =>{
+    let res = []
+    fetch("https://rickandmortyapi.com/api/character").then(function(response) {
+        return response.json();
+    }).then(function(data){
+        data.results.forEach(char => {
+            res.push({name: char.name, origin: char.origin.name})
+        });
+    });
+    return res;
+  }
+
+  function getAllNames(){
+    let res = []
+    fetch("https://rickandmortyapi.com/api/character").then(function(response) {
+        return response.json();
+    }).then(function(data){
+        data.results.forEach(char => {
+            res.push(char);
+        });
+    });
+    return res;
+};
 
 function getAliveCharacters(){
     let res;
