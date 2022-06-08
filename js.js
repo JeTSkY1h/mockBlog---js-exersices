@@ -14,8 +14,24 @@ const factorial = (n) => {
     return res;
 }
 
-const Student = { 
-    id: Date.now() + "Student";
-    
+async function fetchAsync (url) {
+    let response = await fetch(url);
+    let data = await response.json();
+    return data;
+  }
 
+async function getAllnames() {
+    console.log()
 }
+
+function getAliveCharacters(){
+    let res;
+    fetch("https://rickandmortyapi.com/api/character/?status=alive").then(function(response) {
+        return response.json();
+    }).then(function(data){
+        res = data;
+        console.log(data.results);
+
+    });
+    return res;
+};
